@@ -1,4 +1,4 @@
-import Board from './views/Morpion/components/organisms/Board';
+import Board from './domains/Morpion/components/organisms/Board';
 
 function App() {  
   return <Board />;

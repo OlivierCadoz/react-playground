@@ -7,8 +7,7 @@ import { useResolveWinner } from './useResolveWinner.ts';
 export function useMorpion() {
   const [squares, setSquares] = useState(initSquares());
 
-  const { histories, setHistories, resetHistories, setHistoryIndex } =
-    useHistories();
+  const { histories, setHistories, setHistoryIndex } = useHistories();
   const handleHistoryClick = (index: number) => {
     setSquares([...histories[index]]);
     setHistoryIndex(index);
@@ -26,17 +25,11 @@ export function useMorpion() {
     setSquares(nextSquares);
   };
 
-  const handleResetClick = () => {
-    setSquares(initSquares());
-    resetHistories();
-  };
-
   return {
     squares,
     histories,
     winner,
     handleHistoryClick,
     handleSquareClick,
-    handleResetClick,
   };
 }

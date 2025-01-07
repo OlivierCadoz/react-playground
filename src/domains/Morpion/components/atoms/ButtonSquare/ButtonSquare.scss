@@ -1,0 +1,16 @@
+@import '@/domains/Morpion/assets/scss/variables.scss';
+
+.button-square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: calc($square-size / 1.5);
+  font-weight: bold;
+  line-height: $square-size;
+  height: $square-size;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: $square-size;
+}

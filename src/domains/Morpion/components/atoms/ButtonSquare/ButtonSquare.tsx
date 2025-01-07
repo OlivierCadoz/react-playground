@@ -1,4 +1,4 @@
-import '../../assets/squares.scss';
+import '@/domains/Morpion/components/atoms/ButtonSquare/ButtonSquare.scss';
 
 export default function ButtonSquare({
   value,
@@ -10,7 +10,7 @@ export default function ButtonSquare({
   const handleClick = () => !value && onSquareClick();
 
   return (
-    <button className="square" onClick={handleClick}>
+    <button className="button-square" onClick={handleClick}>
       {value}
     </button>
   );

@@ -1,10 +1,10 @@
-import { useMorpion } from '../../hooks/useMorpion.ts';
-import Morpion from '@/domains/Morpion/components/molecules/Morpion.tsx';
+import { useMorpion } from '@/domains/Morpion/hooks/useMorpion.ts';
+import Morpion from '@/domains/Morpion/components/molecules/Morpion/Morpion.tsx';
 import Histories from '@/domains/Morpion/components/molecules/Histories.tsx';
 import ButtonCommon from '@/domains/Morpion/components/atoms/ButtonCommon.tsx';
 
+
 export default function Board() {
-  const morpion = useMorpion();
   const {
     squares,
     histories,
@@ -12,7 +12,7 @@ export default function Board() {
     handleHistoryClick,
     handleSquareClick,
     handleResetClick,
-  } = morpion;
+  } = useMorpion();
 
   return (
     <>

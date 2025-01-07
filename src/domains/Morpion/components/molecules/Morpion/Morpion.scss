@@ -1,0 +1,7 @@
+@import '../../../assets/scss/variables.scss';
+
+.morpion-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(var($square-size) * 3);
+}

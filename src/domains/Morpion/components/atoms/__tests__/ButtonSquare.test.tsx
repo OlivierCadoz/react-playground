@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ButtonSquare from '../ButtonSquare/ButtonSquare';
+import ButtonSquare from '@morpion/components/atoms/ButtonSquare/ButtonSquare';
 
 describe('ButtonSquare component', () => {
   describe('When component is mounted', () => {

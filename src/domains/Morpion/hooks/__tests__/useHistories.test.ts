@@ -1,15 +1,15 @@
 import { renderHook, act } from '@testing-library/react';
-import { useHistories } from '../useHistories';
+import { useHistories } from '@morpion/hooks/useHistories';
 import {
   historiesDefault,
   historiesSingleMove,
   histories2Moves,
-} from '../../../../tests/fixtures/histories.fixtures';
+} from '@/tests/fixtures/histories.fixtures';
 import {
   squaresSingleX,
   squares2moves,
   squares3moves,
-} from '../../../../tests/fixtures/squares.fixtures';
+} from '@/tests/fixtures/squares.fixtures';
 
 describe('useHistories', () => {
   describe('When the composable is called', () => {

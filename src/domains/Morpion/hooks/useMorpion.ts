@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useResolveTurn } from './useResolveTurn.ts';
-import { useHistories } from './useHistories.ts';
-import { initSquares } from '../utils/morpion.utils.ts';
-import { useResolveWinner } from './useResolveWinner.ts';
+import { useResolveTurn } from '@morpion/hooks/useResolveTurn.ts';
+import { useHistories } from '@morpion/hooks/useHistories.ts';
+import { useResolveWinner } from '@morpion/hooks/useResolveWinner.ts';
+import { initSquares } from '@morpion/utils/morpion.utils.ts';
 
 export function useMorpion() {
   const [squares, setSquares] = useState(initSquares());

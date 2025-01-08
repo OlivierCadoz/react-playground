@@ -1,5 +1,5 @@
-import ButtonSquare from '@/domains/Morpion/components/atoms/ButtonSquare/ButtonSquare';
-import '@/domains/Morpion/components/molecules/Morpion/Morpion.scss';
+import ButtonSquare from '@morpion/components/atoms/ButtonSquare/ButtonSquare';
+import '@morpion/components/molecules/Morpion/Morpion.scss';
 
 export default function Morpion({
   squares,

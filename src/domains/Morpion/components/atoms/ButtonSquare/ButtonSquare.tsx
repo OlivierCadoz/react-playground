@@ -1,4 +1,4 @@
-import '@/domains/Morpion/components/atoms/ButtonSquare/ButtonSquare.scss';
+import '@morpion/components/atoms/ButtonSquare/ButtonSquare.scss';
 
 export default function ButtonSquare({
   value,

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ButtonCommon from '../ButtonCommon';
+import ButtonCommon from '@morpion/components/atoms/ButtonCommon';
 
 describe('ButtonCommon component', () => {
   describe('When component is mounted', () => {

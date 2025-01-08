@@ -1,4 +1,4 @@
-import ButtonCommon from '../atoms/ButtonCommon';
+import ButtonCommon from '@morpion/components/atoms/ButtonCommon';
 
 export default function Histories({
   histories,

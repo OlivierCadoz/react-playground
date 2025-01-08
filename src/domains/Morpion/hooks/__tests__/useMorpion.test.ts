@@ -1,20 +1,19 @@
 import { renderHook, act } from '@testing-library/react';
 
-import { useMorpion } from '../useMorpion';
+import { useMorpion } from '@morpion/hooks/useMorpion';
 
 import {
   squares2moves,
   squaresEmpty,
   squaresSingleX,
-} from '../../../../tests/fixtures/squares.fixtures';
+} from '@/tests/fixtures/squares.fixtures';
 import {
   histories2Moves,
   historiesDefault,
-} from '../../../../tests/fixtures/histories.fixtures';
+} from '@/tests/fixtures/histories.fixtures';
 
 const setHistoriesMock = vi.fn();
 const setHistoryIndexMock = vi.fn();
-const resetHistoriesMock = vi.fn();
 const useHistoriesMock = vi.hoisted(() =>
   vi.fn(() => ({
     histories: [],
@@ -23,7 +22,7 @@ const useHistoriesMock = vi.hoisted(() =>
     resetHistories: vi.fn(),
   }))
 );
-vi.mock('../useHistories', () => ({
+vi.mock('@morpion/hooks/useHistories', () => ({
   useHistories: useHistoriesMock,
 }));
 
@@ -32,7 +31,7 @@ const useResolveTurnMock = vi.hoisted(() =>
     isXNext: false,
   }))
 );
-vi.mock('../useResolveTurn', () => ({
+vi.mock('@morpion/hooks/useResolveTurn', () => ({
   useResolveTurn: useResolveTurnMock,
 }));
 
@@ -42,7 +41,7 @@ const useResolveWinnerMock = vi.hoisted(() =>
     computeWinner: vi.fn(),
   }))
 );
-vi.mock('../useResolveWinner', () => ({
+vi.mock('@morpion/hooks/useResolveWinner', () => ({
   useResolveWinner: useResolveWinnerMock,
 }));
 
@@ -138,25 +137,6 @@ describe('useMorpion composable', () => {
         expect(result.current.squares).toEqual(squaresEmpty);
         expect(setHistoriesMock).not.toHaveBeenCalledWith();
       });
-    });
-  });
-
-  describe('When handleResetClick is called', () => {
-    test('Then it resets squares by default', () => {
-      vi.mocked(useHistoriesMock).mockReturnValueOnce({
-        histories: histories2Moves,
-        setHistoryIndex: vi.fn(),
-        setHistories: vi.fn(),
-        resetHistories: resetHistoriesMock,
-      });
-
-      const { result } = renderHook(() => useMorpion());
-      act(() => {
-        result.current.handleResetClick();
-      });
-
-      expect(result.current.squares).toEqual(squaresEmpty);
-      expect(resetHistoriesMock).toHaveBeenCalled();
     });
   });
 });

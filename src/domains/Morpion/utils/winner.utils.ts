@@ -1,4 +1,4 @@
-import { lines } from '../constants/lines';
+import { lines } from '@morpion/constants/lines';
 
 export function computeWinner(squares: string[]) {
   let winner = '';

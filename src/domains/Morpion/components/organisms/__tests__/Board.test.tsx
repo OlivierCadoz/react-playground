@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Board from '../Board';
+import Board from '@morpion/components/organisms/Board';
 
 const useMorpionMock = vi.hoisted(() =>
   vi.fn(() => ({
@@ -9,7 +9,7 @@ const useMorpionMock = vi.hoisted(() =>
   }))
 );
 
-vi.mock('../../../hooks/useMorpion.ts', () => ({
+vi.mock('@morpion/hooks/useMorpion.ts', () => ({
   useMorpion: useMorpionMock,
 }));
 

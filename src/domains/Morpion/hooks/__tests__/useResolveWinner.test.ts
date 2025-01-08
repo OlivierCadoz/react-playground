@@ -1,11 +1,10 @@
 import { renderHook } from '@testing-library/react';
 
-import { useResolveWinner } from '../useResolveWinner';
+import { useResolveWinner } from '@morpion/hooks/useResolveWinner';
+import { computeWinner } from '@morpion/utils/winner.utils';
+import { squaresEmpty } from '@/tests/fixtures/squares.fixtures';
 
-import { computeWinner } from '../../utils/winner.utils';
-import { squaresEmpty } from '../../../../tests/fixtures/squares.fixtures';
-
-vi.mock('../../utils/winner.utils', () => ({
+vi.mock('@morpion/utils/winner.utils', () => ({
   computeWinner: vi.fn(),
 }));
 

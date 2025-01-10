@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { computeWinner } from '@morpion/utils/winner.utils.ts';
+import { computeWinner } from '@morpion/utils/winner.ts';
 
 export function useResolveWinner(squares: string[]) {
   const [winner, setWinner] = useState('');

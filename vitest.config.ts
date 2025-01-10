@@ -14,7 +14,10 @@ export default defineConfig({
     setupFiles: ["./setupTests.ts"],
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@morpion': path.resolve(__dirname, './src/domains/Morpion')
+      '@components': path.resolve(__dirname, './src/components'),
+      '@utils': path.resolve(__dirname, './src/utils'),
+      '@morpion': path.resolve(__dirname, './src/domains/Morpion'),
+      '@pages': path.resolve(__dirname, './src/pages')
     }
   },
 });

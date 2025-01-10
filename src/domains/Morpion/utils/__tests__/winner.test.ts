@@ -1,4 +1,4 @@
-import { computeWinner } from '@morpion/utils/winner.utils';
+import { computeWinner } from '@morpion/utils/winner';
 import {
   squaresEmpty,
   squaresLinesCompleted,

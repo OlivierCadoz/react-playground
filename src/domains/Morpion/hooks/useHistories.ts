@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { initSquares } from '@morpion/utils/morpion.utils.ts';
+import { initSquares } from '@morpion/utils/morpion.ts';
 
 export function useHistories() {
   const [historyIndex, setHistoryIndex] = useState(0);

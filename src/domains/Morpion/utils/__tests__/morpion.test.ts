@@ -1,4 +1,4 @@
-import { initSquares } from '@morpion/utils/morpion.utils';
+import { initSquares } from '@morpion/utils/morpion';
 import { squaresEmpty } from '@/tests/fixtures/squares.fixtures';
 
 describe('initSquares function', () => {

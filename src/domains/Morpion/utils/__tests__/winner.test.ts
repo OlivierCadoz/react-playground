@@ -4,7 +4,7 @@ import {
   squaresLinesCompleted,
   squaresWithX,
   squaresWithO,
-} from '@/tests/fixtures/squares.fixtures';
+} from '@tests/fixtures/squares.fixtures';
 
 describe('computeWinner function', () => {
   describe('Given no line is completed with same value', () => {

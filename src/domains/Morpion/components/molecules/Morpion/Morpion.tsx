@@ -9,7 +9,7 @@ export default function Morpion({
   handleSquareClick: (index: number) => void;
 }) {
   return (
-    <ul className="morpion-list">
+    <ul className="morpion-list" data-testid="morpion">
       {squares.map((value, index) => (
         <li className="morpion-list__item" key={index}>
           <ButtonSquare

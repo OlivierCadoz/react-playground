@@ -3,7 +3,7 @@ import Morpion from '@morpion/components/molecules/Morpion/Morpion';
 import {
   squares3moves,
   squaresEmpty,
-} from '@/tests/fixtures/squares.fixtures';
+} from '@tests/fixtures/squares.fixtures';
 
 describe('Morpion component', () => {
   describe('Given there is squares listed', () => {

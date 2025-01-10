@@ -4,12 +4,12 @@ import {
   historiesDefault,
   historiesSingleMove,
   histories2Moves,
-} from '@/tests/fixtures/histories.fixtures';
+} from '@tests/fixtures/histories.fixtures';
 import {
   squaresSingleX,
   squares2moves,
   squares3moves,
-} from '@/tests/fixtures/squares.fixtures';
+} from '@tests/fixtures/squares.fixtures';
 
 describe('useHistories', () => {
   describe('When the composable is called', () => {

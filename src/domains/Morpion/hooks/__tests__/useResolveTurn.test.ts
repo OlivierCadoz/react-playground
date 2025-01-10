@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react';
 
 import { useResolveTurn } from '@morpion/hooks/useResolveTurn';
-import { squaresEmpty, squaresWithX } from '@/tests/fixtures/squares.fixtures';
+import { squaresEmpty, squaresWithX } from '@tests/fixtures/squares.fixtures';
 
 describe('useResolveTurn composable', () => {
   describe.each`

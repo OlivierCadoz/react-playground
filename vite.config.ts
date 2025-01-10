@@ -15,7 +15,18 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './src/components'),
       '@utils': path.resolve(__dirname, './src/utils'),
       '@morpion': path.resolve(__dirname, './src/domains/Morpion'),
-      '@pages': path.resolve(__dirname, './src/pages')
+      '@pages': path.resolve(__dirname, './src/pages'),
+      '@routes': path.resolve(__dirname, './src/routes'),
+      '@tests': path.resolve(__dirname, './src/tests'),
+      '@constants': path.resolve(__dirname, './src/constants'),
+      '@models': path.resolve(__dirname, './src/models'),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern-compiler',
+      },
     },
   },
 });

@@ -6,11 +6,11 @@ import {
   squares2moves,
   squaresEmpty,
   squaresSingleX,
-} from '@/tests/fixtures/squares.fixtures';
+} from '@tests/fixtures/squares.fixtures';
 import {
   histories2Moves,
   historiesDefault,
-} from '@/tests/fixtures/histories.fixtures';
+} from '@tests/fixtures/histories.fixtures';
 
 const setHistoriesMock = vi.fn();
 const setHistoryIndexMock = vi.fn();

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Histories from '@morpion/components/molecules/Histories';
-import { histories2Moves } from '@/tests/fixtures/histories.fixtures';
+import { histories2Moves } from '@tests/fixtures/histories.fixtures';
 
 describe('Histories component', () => {
   describe('Given there is hitories listed', () => {

@@ -17,6 +17,7 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './src/components'),
       '@utils': path.resolve(__dirname, './src/utils'),
       '@morpion': path.resolve(__dirname, './src/domains/Morpion'),
+      '@sudoku': path.resolve(__dirname, './src/domains/Sudoku'),
       '@pages': path.resolve(__dirname, './src/pages'),
       '@routes': path.resolve(__dirname, './src/routes'),
       '@tests': path.resolve(__dirname, './src/tests'),

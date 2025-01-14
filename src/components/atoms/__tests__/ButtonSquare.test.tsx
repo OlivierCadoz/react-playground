@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ButtonSquare from '@morpion/components/atoms/ButtonSquare/ButtonSquare';
+import ButtonSquare from '@components/atoms/ButtonSquare/ButtonSquare';
 
 describe('ButtonSquare component', () => {
   describe('When component is mounted', () => {
@@ -11,7 +11,7 @@ describe('ButtonSquare component', () => {
     });
   });
 
-  describe('Given onSquareClick prop is passed and value is empty', () => {
+  describe('Given onSquareClick prop is passed', () => {
     describe('When button is clicked', () => {
       test('Then it triggers onSquareClick callback', () => {
         const onSquareClickMock = vi.fn();
@@ -21,20 +21,6 @@ describe('ButtonSquare component', () => {
         buttonSquareCmp.click();
 
         expect(onSquareClickMock).toHaveBeenCalled();
-      });
-    });
-  });
-
-  describe('Given onSquareClick prop is passed and value is set to a truthy value', () => {
-    describe('When button is clicked', () => {
-      test('Then it does nothing', () => {
-        const onSquareClickMock = vi.fn();
-        render(<ButtonSquare value={'X'} onSquareClick={onSquareClickMock} />);
-
-        const buttonSquareCmp = screen.getByRole('button');
-        buttonSquareCmp.click();
-
-        expect(onSquareClickMock).not.toHaveBeenCalled();
       });
     });
   });

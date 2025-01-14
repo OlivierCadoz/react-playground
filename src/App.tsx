@@ -9,7 +9,9 @@ function App() {
       <BrowserRouter>
         <Header />
           
-        <Routes />
+        <main>
+          <Routes />
+        </main>
       </BrowserRouter>
     </>
   );

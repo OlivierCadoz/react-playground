@@ -10,8 +10,8 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     include: ['**/*.test.ts', '**/*.test.tsx'],
-    exclude: [...configDefaults.exclude, './src/App.tsx', './src/main.tsx'],
-    setupFiles: ["./setupTests.ts"],
+    exclude: [...configDefaults.exclude],
+    setupFiles: ['./setupTests.ts'],
     alias: {
       '@': path.resolve(__dirname, './src'),
       '@components': path.resolve(__dirname, './src/components'),
@@ -24,12 +24,22 @@ export default defineConfig({
       '@constants': path.resolve(__dirname, './src/constants'),
       '@models': path.resolve(__dirname, './src/models'),
     },
+    coverage: {
+      exclude: [
+        ...configDefaults.exclude,
+        './src/main.tsx',
+        '**/models/*',
+        '**/*.test.ts',
+        '**/*.test.tsx',
+        '**/*.d.ts',
+      ],
+    },
   },
   css: {
     preprocessorOptions: {
       scss: {
-        api: 'modern-compiler'
-      }
-    }
-  }
+        api: 'modern-compiler',
+      },
+    },
+  },
 });

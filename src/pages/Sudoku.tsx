@@ -1,5 +1,7 @@
-export default function Home() {
+import Board from "@sudoku/components/molecules/Sudoku/Sudoku.tsx";
+
+export default function Sudoku() {
   return (
-    <div>Sudoku</div>
+    <Board />
   )
 }

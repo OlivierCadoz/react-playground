@@ -1,5 +1,5 @@
 import Board from '@morpion/components/organisms/Board';
 
-export default function Home() {
+export default function Morpion() {
   return <Board />
 }

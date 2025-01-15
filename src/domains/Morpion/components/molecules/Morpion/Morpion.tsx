@@ -1,4 +1,4 @@
-import ButtonSquare from '@components/atoms/ButtonSquare/ButtonSquare';
+import ButtonCell from '@/components/atoms/ButtonCell/ButtonCell';
 import '@morpion/components/molecules/Morpion/Morpion.scss';
 
 export default function Morpion({
@@ -12,9 +12,9 @@ export default function Morpion({
     <ul className="morpion-list" data-testid="morpion">
       {squares.map((value, index) => (
         <li className="morpion-list__item" key={index}>
-          <ButtonSquare
+          <ButtonCell
             value={value}
-            onSquareClick={() => !value && handleSquareClick(index)}
+            onCellClick={() => !value && handleSquareClick(index)}
           />
         </li>
       ))}

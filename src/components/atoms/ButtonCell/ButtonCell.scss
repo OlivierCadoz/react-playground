@@ -1,7 +1,5 @@
 @use '@/assets/scss/variables.scss';
 
-$default-cell-size: 25px;
-
 .button-cell {
   height: variables.$default-cell-size;
   width: variables.$default-cell-size;

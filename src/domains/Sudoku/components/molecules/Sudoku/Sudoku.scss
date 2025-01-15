@@ -1,0 +1,14 @@
+@use '@/assets/scss/variables.scss';
+
+.sudoku-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(variables.$sudoku-cell-size * 9);
+
+  .button-cell {
+    height: variables.$sudoku-cell-size;
+    width: variables.$sudoku-cell-size;
+    font-size: calc(variables.$sudoku-cell-size / 1.5);
+    line-height: variables.$sudoku-cell-size;
+  }
+}

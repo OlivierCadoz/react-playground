@@ -4,7 +4,7 @@ export default function ButtonSquare({
   value,
   onSquareClick,
 }: {
-  value: string;
+  value: string | number;
   onSquareClick: () => void;
 }) {
   const handleClick = () => onSquareClick();

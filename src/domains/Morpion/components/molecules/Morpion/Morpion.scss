@@ -3,5 +3,12 @@
 .morpion-list {
   display: flex;
   flex-wrap: wrap;
-  width: calc(variables.$square-size * 3);
+  width: calc(variables.$morpion-cell-size * 3);
+
+  .button-cell {
+    height: variables.$morpion-cell-size;
+    width: variables.$morpion-cell-size;
+    font-size: calc(variables.$morpion-cell-size / 1.5);
+    line-height: variables.$morpion-cell-size;
+  }
 }

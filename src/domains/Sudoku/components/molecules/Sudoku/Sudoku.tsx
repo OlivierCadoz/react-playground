@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import '@sudoku/components/molecules/Sudoku/Sudoku.scss';
 import ButtonCell from '@/components/atoms/ButtonCell/ButtonCell';
-import { useFetchSudoku } from '@sudoku/hooks/useFetchSudoku';
 import ButtonCommon from '@/components/atoms/ButtonCommon';
+import { useFetchSudoku } from '@sudoku/hooks/useFetchSudoku';
+import { useSudoku } from '@sudoku/hooks/useSudoku';
 
 export default function Sudoku() {
   const { fetchSudoku, grid, loading } = useFetchSudoku();
-  const displayGrid = grid && !loading;
+  const { sudoku, handleCellClick } = useSudoku(grid);
+  const displayGrid = sudoku && !loading;
 
-  useEffect(() => {
-    fetchSudoku();
-  }, []);
+  useEffect(() => fetchSudoku(), []);
 
   return (
     <div className="sudoku">
@@ -22,10 +22,13 @@ export default function Sudoku() {
 
       {displayGrid ? (
         <ul className="sudoku-list">
-          {grid?.value.map((row, rowIndex) =>
+          {sudoku.map((row, rowIndex) =>
             row.map((cell, cellIndex) => (
               <li key={`${rowIndex} ${cellIndex}`}>
-                <ButtonCell value={cell || ''} onCellClick={() => {}} />
+                <ButtonCell
+                  value={cell || ''}
+                  onCellClick={() => handleCellClick(rowIndex, cellIndex)}
+                />
               </li>
             ))
           )}

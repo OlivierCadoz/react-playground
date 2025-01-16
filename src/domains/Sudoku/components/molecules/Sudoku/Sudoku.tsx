@@ -4,7 +4,6 @@ import ButtonCell from '@/components/atoms/ButtonCell/ButtonCell';
 import { useFetchSudoku } from '@sudoku/hooks/useFetchSudoku';
 
 export default function Sudoku() {
-  // const [sudoku, setSudoku] = useState([]);
   const { fetchSudoku, grid, loading } = useFetchSudoku();
 
   useEffect(() => {
@@ -15,15 +14,19 @@ export default function Sudoku() {
     <div className="sudoku">
       <h1>Sudoku</h1>
 
-      <ul className="sudoku-list">
-        {grid?.value.map((row, rowIndex) =>
-          row.map((cell, cellIndex) => (
-            <li key={`${rowIndex} ${cellIndex}`}>
-              <ButtonCell value={cell} onCellClick={() => {}} />
-            </li>
-          ))
-        )}
-      </ul>
+      {grid && !loading ? (
+        <ul className="sudoku-list">
+          {grid?.value.map((row, rowIndex) =>
+            row.map((cell, cellIndex) => (
+              <li key={`${rowIndex} ${cellIndex}`}>
+                <ButtonCell value={cell} onCellClick={() => {}} />
+              </li>
+            ))
+          )}
+        </ul>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 }

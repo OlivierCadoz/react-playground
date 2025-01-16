@@ -2,9 +2,11 @@ import { useEffect } from 'react';
 import '@sudoku/components/molecules/Sudoku/Sudoku.scss';
 import ButtonCell from '@/components/atoms/ButtonCell/ButtonCell';
 import { useFetchSudoku } from '@sudoku/hooks/useFetchSudoku';
+import ButtonCommon from '@/components/atoms/ButtonCommon';
 
 export default function Sudoku() {
   const { fetchSudoku, grid, loading } = useFetchSudoku();
+  const displayGrid = grid && !loading;
 
   useEffect(() => {
     fetchSudoku();
@@ -14,7 +16,11 @@ export default function Sudoku() {
     <div className="sudoku">
       <h1>Sudoku</h1>
 
-      {grid && !loading ? (
+      <ButtonCommon onClickEvent={fetchSudoku} disabled={loading}>
+        Reset
+      </ButtonCommon>
+
+      {displayGrid ? (
         <ul className="sudoku-list">
           {grid?.value.map((row, rowIndex) =>
             row.map((cell, cellIndex) => (

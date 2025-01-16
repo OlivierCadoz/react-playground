@@ -25,7 +25,7 @@ export default function Sudoku() {
           {grid?.value.map((row, rowIndex) =>
             row.map((cell, cellIndex) => (
               <li key={`${rowIndex} ${cellIndex}`}>
-                <ButtonCell value={cell} onCellClick={() => {}} />
+                <ButtonCell value={cell || ''} onCellClick={() => {}} />
               </li>
             ))
           )}

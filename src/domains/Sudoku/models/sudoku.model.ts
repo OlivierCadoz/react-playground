@@ -1,16 +1,16 @@
-export type Sudoku = number[][];
+export type SudokuType = number[][];
 
-type Difficulty = 'Easy' | 'Medium' | 'Hard';
+type DifficultyType = 'Easy' | 'Medium' | 'Hard';
 
-export interface Grid {
-  value: Sudoku;
-  solution: Sudoku;
-  difficulty: Difficulty;
+export interface GridModel {
+  value: SudokuType;
+  solution: SudokuType;
+  difficulty: DifficultyType;
 }
 
-export interface SudokuData {
+export interface SudokuDataModel {
   newboard: {
-    grids: Grid[];
+    grids: GridModel[];
     results: number;
     message: string;
   };

@@ -1,6 +1,6 @@
-import { Grid } from "@sudoku/models/sudoku.model";
+import { GridModel } from "@sudoku/models/sudoku.model";
 
-export const gridDev: Grid = {
+export const gridDev: GridModel = {
   value: [
     [1, 0, 7, 0, 8, 9, 0, 0, 4],
     [2, 8, 0, 3, 0, 0, 0, 0, 0],

@@ -36,8 +36,10 @@ exports[`App > When App is rendered > Then it should match snapshot 1`] = `
       </ul>
     </nav>
   </header>
-  <div>
-    Home
-  </div>
+  <main>
+    <div>
+      Home
+    </div>
+  </main>
 </div>
 `;

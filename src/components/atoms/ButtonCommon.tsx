@@ -3,7 +3,7 @@ export default function ButtonCommon({
   disabled = false,
   onClickEvent,
 }: {
-  children: string;
+  children: string | number;
   disabled?: boolean;
   onClickEvent: () => void;
 }) {

@@ -5,9 +5,13 @@ import { deepClone } from '@sudoku/utils';
 export function useSudoku(grid: GridModel | null) {
   const [currentIndexes, setCurrentIndexes] = useState([-1, -1]);
   const [sudoku, setSudoku] = useState<SudokuType | null>(null);
+  const [solution, setSolution] = useState<SudokuType | null>(null);
 
   useEffect(() => {
-    grid && setSudoku(deepClone(grid.value));
+    if (grid) {
+      setSudoku(deepClone(grid.value));
+      setSolution(deepClone(grid.solution));
+    }
   }, [grid]);
 
   function handleCellClick(rowIndex: number, cellIndex: number) {
@@ -28,5 +32,5 @@ export function useSudoku(grid: GridModel | null) {
     setSudoku(nextSudoku);
   }
 
-  return { sudoku, handleCellClick, handleValueChange };
+  return { sudoku, solution, handleCellClick, handleValueChange };
 }

@@ -8,7 +8,8 @@ import { useSudoku } from '@sudoku/hooks/useSudoku';
 
 export default function Board() {
   const { fetchSudoku, grid, loading } = useFetchSudoku();
-  const { sudoku, handleCellClick, handleValueChange } = useSudoku(grid);
+  const { sudoku, solution, handleCellClick, handleValueChange } =
+    useSudoku(grid);
   const displayGrid = sudoku && !loading;
 
   useEffect(() => fetchSudoku(), []);
@@ -22,7 +23,11 @@ export default function Board() {
       </ButtonCommon>
 
       {displayGrid ? (
-        <Sudoku sudoku={sudoku} onCellClick={handleCellClick} />
+        <Sudoku
+          sudoku={sudoku}
+          solution={solution!}
+          onCellClick={handleCellClick}
+        />
       ) : (
         <p>Loading...</p>
       )}

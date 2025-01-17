@@ -1,37 +1,32 @@
 import { useState, useEffect } from 'react';
-import { Grid, Sudoku } from '@sudoku/models/sudoku.model';
+import { GridModel, SudokuType } from '@sudoku/models/sudoku.model';
 import { deepClone } from '@sudoku/utils';
 
-export function useSudoku(grid: Grid | null) {
-  console.log("🚀 ~ useSudoku ~ grid:", grid && deepClone(grid.value))
-  const [currentValue, setCurrentValue] = useState(1);
-  const [sudoku, setSudoku] = useState<Sudoku | null>(null);
-  console.log("🚀 ~ useSudoku ~ sudoku:", sudoku)
-  // const solution: Sudoku = grid && deepClone(grid.solution);
+export function useSudoku(grid: GridModel | null) {
+  const [currentIndexes, setCurrentIndexes] = useState([-1, -1]);
+  const [sudoku, setSudoku] = useState<SudokuType | null>(null);
 
   useEffect(() => {
-    if (grid) {
-      setSudoku(deepClone(grid.value));
-    }
+    grid && setSudoku(deepClone(grid.value));
   }, [grid]);
 
-  const handleCellClick = (rowIndex: number, cellIndex: number) => {
-    const clone: Sudoku = deepClone(sudoku!);
+  function handleCellClick(rowIndex: number, cellIndex: number) {
+    setCurrentIndexes([rowIndex, cellIndex]);
+  }
 
-    const cellMap = (cell: number, cellIdx: number) => {
-      if (cellIdx === cellIndex) return currentValue;
-      return cell;
-    };
+  function handleValueChange(value: number) {
+    const clone: SudokuType = deepClone(sudoku!);
+    const [rowIndex, cellIndex] = currentIndexes;
 
-    const rowMap = (row: number[], rowIdx: number) => {
-      if (rowIdx === rowIndex) return row.map(cellMap);
-      return row;
-    }
+    const cellMap = (cell: number, cellIdx: number) =>
+      cellIdx === cellIndex ? value : cell;
+
+    const rowMap = (row: number[], rowIdx: number) =>
+      rowIdx === rowIndex ? row.map(cellMap) : row;
 
     const nextSudoku = clone.map(rowMap);
-
     setSudoku(nextSudoku);
-  };
+  }
 
-  return { sudoku, handleCellClick };
+  return { sudoku, handleCellClick, handleValueChange };
 }

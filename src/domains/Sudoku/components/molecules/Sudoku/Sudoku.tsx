@@ -4,18 +4,34 @@ import { SudokuType } from '@/domains/Sudoku/models/sudoku.model';
 
 export default function Sudoku({
   sudoku,
-  solution,
+  currentIndexes,
   onCellClick,
 }: {
   sudoku: SudokuType;
-  solution: SudokuType;
+  currentIndexes: [number, number];
   onCellClick: (rowIndex: number, cellIndex: number) => void;
 }) {
+  function setCellClass(rowIndex: number, cellIndex: number) {
+    const [rowIdx, cellIdx] = currentIndexes || [-1, -1];
+
+    if (rowIndex === rowIdx && cellIndex === cellIdx) {
+      return 'sudoku-cell--selected';
+    }
+
+    if (rowIndex === rowIdx && cellIndex !== cellIdx) {
+      return 'sudoku-cell--row-selected';
+    }
+
+    if (rowIndex !== rowIdx && cellIndex === cellIdx) {
+      return 'sudoku-cell--column-selected';
+    }
+  }
+
   return (
     <ul className="sudoku-list">
       {sudoku.map((row, rowIndex) =>
         row.map((cell, cellIndex) => (
-          <li key={`${rowIndex}-${cellIndex}`}>
+          <li key={`${rowIndex}-${cellIndex}`} className={`sudoku-cell ${setCellClass(rowIndex, cellIndex)}`}>
             <ButtonCell
               value={cell || ''}
               onCellClick={() => onCellClick(rowIndex, cellIndex)}

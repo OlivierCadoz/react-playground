@@ -19,4 +19,17 @@
   li:nth-child(27n+27) {  
     margin-bottom: 1px;
   }
+
+  .sudoku-cell {
+    &--selected .button-cell {
+      color: white;
+      background-color: rgba(green, 0.8);
+    }
+
+    &--column-selected .button-cell,
+    &--row-selected .button-cell {
+      color: white;
+      background-color: rgba(green, 0.6);
+    }
+  }
 }

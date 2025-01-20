@@ -1,6 +1,15 @@
 import '@sudoku/components/molecules/Sudoku/Sudoku.scss';
 import ButtonCell from '@/components/atoms/ButtonCell/ButtonCell';
-import { SudokuType } from '@/domains/Sudoku/models/sudoku.model';
+import {
+  GridIndexesTuple,
+  SudokuType,
+} from '@/domains/Sudoku/models/sudoku.model';
+
+interface SetCellClassParameters {
+  cell: number;
+  rowIndex: number;
+  cellIndex: number;
+}
 
 export default function Sudoku({
   sudoku,
@@ -8,18 +17,21 @@ export default function Sudoku({
   onCellClick,
 }: {
   sudoku: SudokuType;
-  currentIndexes: [number, number];
+  currentIndexes: GridIndexesTuple;
   onCellClick: (rowIndex: number, cellIndex: number) => void;
 }) {
-  function setCellClass(rowIndex: number, cellIndex: number) {
+  function setCellClass({ cell, rowIndex, cellIndex }: SetCellClassParameters) {
     const [rowIdx, cellIdx] = currentIndexes || [-1, -1];
+    const sudokuValue = sudoku?.[rowIdx]?.[cellIdx];
     const isSameRowIndex = rowIndex === rowIdx;
     const isSameCellIndex = cellIndex === cellIdx;
     const isSameRowOrCellIndex =
       (isSameRowIndex && !isSameCellIndex) ||
       (!isSameRowIndex && isSameCellIndex);
+    const isSelectedOrSameValueAsSelected =
+      (isSameRowIndex && isSameCellIndex) || cell && sudokuValue === cell;
 
-    if (isSameRowIndex && isSameCellIndex) return 'sudoku-cell--selected';
+    if (isSelectedOrSameValueAsSelected) return 'sudoku-cell--selected';
     if (isSameRowOrCellIndex) return 'sudoku-cell--highlighted';
   }
 
@@ -29,7 +41,11 @@ export default function Sudoku({
         row.map((cell, cellIndex) => (
           <li
             key={`${rowIndex}-${cellIndex}`}
-            className={`sudoku-cell ${setCellClass(rowIndex, cellIndex)}`}
+            className={`sudoku-cell ${setCellClass({
+              cell,
+              rowIndex,
+              cellIndex,
+            })}`}
           >
             <ButtonCell
               value={cell || ''}

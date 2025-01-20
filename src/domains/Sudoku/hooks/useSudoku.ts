@@ -3,7 +3,7 @@ import { GridModel, SudokuType } from '@sudoku/models/sudoku.model';
 import { deepClone } from '@sudoku/utils';
 
 export function useSudoku(grid: GridModel | null) {
-  const [currentIndexes, setCurrentIndexes] = useState([-1, -1]);
+  const [currentIndexes, setCurrentIndexes] = useState<[number, number]>([-1, -1]);
   const [sudoku, setSudoku] = useState<SudokuType | null>(null);
   const [solution, setSolution] = useState<SudokuType | null>(null);
 
@@ -19,8 +19,13 @@ export function useSudoku(grid: GridModel | null) {
   }
 
   function handleValueChange(value: number) {
-    const clone: SudokuType = deepClone(sudoku!);
     const [rowIndex, cellIndex] = currentIndexes;
+    const clone: SudokuType = deepClone(sudoku!);
+    const currentCellValue = clone[rowIndex][cellIndex];
+    const currentSolutionValue = solution![rowIndex][cellIndex];
+    const isCurrentCellCorrect = currentCellValue === currentSolutionValue;
+
+    if (isCurrentCellCorrect) return;
 
     const cellMap = (cell: number, cellIdx: number) =>
       cellIdx === cellIndex ? value : cell;
@@ -32,5 +37,5 @@ export function useSudoku(grid: GridModel | null) {
     setSudoku(nextSudoku);
   }
 
-  return { sudoku, solution, handleCellClick, handleValueChange };
+  return { sudoku, solution, currentIndexes, handleCellClick, handleValueChange };
 }

@@ -8,7 +8,7 @@ import { useSudoku } from '@sudoku/hooks/useSudoku';
 
 export default function Board() {
   const { fetchSudoku, grid, loading } = useFetchSudoku();
-  const { sudoku, solution, handleCellClick, handleValueChange } =
+  const { sudoku, solution, currentIndexes, handleCellClick, handleValueChange } =
     useSudoku(grid);
   const displayGrid = sudoku && !loading;
 
@@ -25,7 +25,7 @@ export default function Board() {
       {displayGrid ? (
         <Sudoku
           sudoku={sudoku}
-          solution={solution!}
+          currentIndexes={currentIndexes}
           onCellClick={handleCellClick}
         />
       ) : (

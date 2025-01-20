@@ -19,7 +19,6 @@ export default function Sudoku({
             <ButtonCell
               value={cell || ''}
               onCellClick={() => onCellClick(rowIndex, cellIndex)}
-              disabled={cell === solution[rowIndex][cellIndex]}
             />
           </li>
         ))

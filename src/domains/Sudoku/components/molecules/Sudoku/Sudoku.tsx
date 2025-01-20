@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import '@sudoku/components/molecules/Sudoku/Sudoku.scss';
 import ButtonCell from '@/components/atoms/ButtonCell/ButtonCell';
 import {
@@ -11,29 +12,33 @@ interface SetCellClassParameters {
   cellIndex: number;
 }
 
+interface SudokuProps {
+  sudoku: SudokuType;
+  currentIndexes: GridIndexesTuple;
+  onCellClick: (rowIndex: number, cellIndex: number) => void;
+}
+
 export default function Sudoku({
   sudoku,
   currentIndexes,
   onCellClick,
-}: {
-  sudoku: SudokuType;
-  currentIndexes: GridIndexesTuple;
-  onCellClick: (rowIndex: number, cellIndex: number) => void;
-}) {
-  function setCellClass({ cell, rowIndex, cellIndex }: SetCellClassParameters) {
-    const [rowIdx, cellIdx] = currentIndexes || [-1, -1];
-    const sudokuValue = sudoku?.[rowIdx]?.[cellIdx];
-    const isSameRowIndex = rowIndex === rowIdx;
-    const isSameCellIndex = cellIndex === cellIdx;
-    const isSameRowOrCellIndex =
-      (isSameRowIndex && !isSameCellIndex) ||
-      (!isSameRowIndex && isSameCellIndex);
-    const isSelectedOrSameValueAsSelected =
-      (isSameRowIndex && isSameCellIndex) || cell && sudokuValue === cell;
+}: SudokuProps) {
+  const setCellClass = useCallback(
+    ({ cell, rowIndex, cellIndex }: SetCellClassParameters) => {
+      const [rowIdx, cellIdx] = currentIndexes || [-1, -1];
+      const sudokuValue = sudoku?.[rowIdx]?.[cellIdx];
+      const isSameRowIdx = rowIndex === rowIdx;
+      const isSameCellIdx = cellIndex === cellIdx;
+      const isSameRowOrCellIdx =
+        (isSameRowIdx && !isSameCellIdx) || (!isSameRowIdx && isSameCellIdx);
+      const isSelectedOrSameValueAsSelected =
+        (isSameRowIdx && isSameCellIdx) || (cell && sudokuValue === cell);
 
-    if (isSelectedOrSameValueAsSelected) return 'sudoku-cell--selected';
-    if (isSameRowOrCellIndex) return 'sudoku-cell--highlighted';
-  }
+      if (isSelectedOrSameValueAsSelected) return 'sudoku-cell--selected';
+      if (isSameRowOrCellIdx) return 'sudoku-cell--highlighted';
+    },
+    [currentIndexes]
+  );
 
   return (
     <ul className="sudoku-list">

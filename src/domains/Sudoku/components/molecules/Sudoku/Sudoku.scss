@@ -26,8 +26,7 @@
       background-color: rgba(green, 0.8);
     }
 
-    &--column-selected .button-cell,
-    &--row-selected .button-cell {
+    &--highlighted .button-cell {
       color: white;
       background-color: rgba(green, 0.6);
     }

@@ -13,25 +13,24 @@ export default function Sudoku({
 }) {
   function setCellClass(rowIndex: number, cellIndex: number) {
     const [rowIdx, cellIdx] = currentIndexes || [-1, -1];
+    const isSameRowIndex = rowIndex === rowIdx;
+    const isSameCellIndex = cellIndex === cellIdx;
+    const isSameRowOrCellIndex =
+      (isSameRowIndex && !isSameCellIndex) ||
+      (!isSameRowIndex && isSameCellIndex);
 
-    if (rowIndex === rowIdx && cellIndex === cellIdx) {
-      return 'sudoku-cell--selected';
-    }
-
-    if (rowIndex === rowIdx && cellIndex !== cellIdx) {
-      return 'sudoku-cell--row-selected';
-    }
-
-    if (rowIndex !== rowIdx && cellIndex === cellIdx) {
-      return 'sudoku-cell--column-selected';
-    }
+    if (isSameRowIndex && isSameCellIndex) return 'sudoku-cell--selected';
+    if (isSameRowOrCellIndex) return 'sudoku-cell--highlighted';
   }
 
   return (
     <ul className="sudoku-list">
       {sudoku.map((row, rowIndex) =>
         row.map((cell, cellIndex) => (
-          <li key={`${rowIndex}-${cellIndex}`} className={`sudoku-cell ${setCellClass(rowIndex, cellIndex)}`}>
+          <li
+            key={`${rowIndex}-${cellIndex}`}
+            className={`sudoku-cell ${setCellClass(rowIndex, cellIndex)}`}
+          >
             <ButtonCell
               value={cell || ''}
               onCellClick={() => onCellClick(rowIndex, cellIndex)}

@@ -1,16 +1,10 @@
-import { useCallback } from 'react';
 import '@sudoku/components/molecules/Sudoku/Sudoku.scss';
 import ButtonCell from '@/components/atoms/ButtonCell/ButtonCell';
 import {
   GridIndexesTuple,
   SudokuType,
 } from '@/domains/Sudoku/models/sudoku.model';
-
-interface SetCellClassParameters {
-  cell: number;
-  rowIndex: number;
-  cellIndex: number;
-}
+import { useCellClass } from '@/domains/Sudoku/hooks/useCellClass';
 
 interface SudokuProps {
   sudoku: SudokuType;
@@ -23,22 +17,7 @@ export default function Sudoku({
   currentIndexes,
   onCellClick,
 }: SudokuProps) {
-  const setCellClass = useCallback(
-    ({ cell, rowIndex, cellIndex }: SetCellClassParameters) => {
-      const [rowIdx, cellIdx] = currentIndexes || [-1, -1];
-      const sudokuValue = sudoku?.[rowIdx]?.[cellIdx];
-      const isSameRowIdx = rowIndex === rowIdx;
-      const isSameCellIdx = cellIndex === cellIdx;
-      const isSameRowOrCellIdx =
-        (isSameRowIdx && !isSameCellIdx) || (!isSameRowIdx && isSameCellIdx);
-      const isSelectedOrSameValueAsSelected =
-        (isSameRowIdx && isSameCellIdx) || (cell && sudokuValue === cell);
-
-      if (isSelectedOrSameValueAsSelected) return 'sudoku-cell--selected';
-      if (isSameRowOrCellIdx) return 'sudoku-cell--highlighted';
-    },
-    [currentIndexes]
-  );
+  const { setCellClass } = useCellClass({ sudoku, currentIndexes });
 
   return (
     <ul className="sudoku-list">

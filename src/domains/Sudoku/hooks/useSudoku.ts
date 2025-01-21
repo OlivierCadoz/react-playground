@@ -3,11 +3,11 @@ import { GridIndexesTuple, GridModel, SudokuType } from '@sudoku/models/sudoku.m
 import { deepClone } from '@sudoku/utils';
 
 export function useSudoku(grid: GridModel | null) {
+  const [sudoku, setSudoku] = useState<SudokuType | null>(null);
+  const [solution, setSolution] = useState<SudokuType | null>(null);
   const [currentIndexes, setCurrentIndexes] = useState<GridIndexesTuple>([
     -1, -1,
   ]);
-  const [sudoku, setSudoku] = useState<SudokuType | null>(null);
-  const [solution, setSolution] = useState<SudokuType | null>(null);
 
   useEffect(() => {
     if (grid) {
@@ -21,8 +21,8 @@ export function useSudoku(grid: GridModel | null) {
   }
 
   function handleValueChange(value: number) {
-    const [rowIndex, cellIndex] = currentIndexes;
     const clone: SudokuType = deepClone(sudoku!);
+    const [rowIndex, cellIndex] = currentIndexes;
     const isCurrentCellCorrect =
       clone[rowIndex][cellIndex] === solution![rowIndex][cellIndex];
 

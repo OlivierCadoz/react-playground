@@ -5,11 +5,13 @@ import Sudoku from '@sudoku/components/molecules/Sudoku/Sudoku';
 import NumericPad from '@sudoku/components/molecules/NumericPad/NumericPad';
 import { useFetchSudoku } from '@sudoku/hooks/useFetchSudoku';
 import { useSudoku } from '@sudoku/hooks/useSudoku';
+import { useNumberLeft } from '@sudoku/hooks/useNumberLeft';
 
 export default function Board() {
   const { fetchSudoku, grid, loading } = useFetchSudoku();
-  const { sudoku, currentIndexes, handleCellClick, handleValueChange } =
+  const { sudoku, solution, currentIndexes, handleCellClick, handleValueChange } =
     useSudoku(grid);
+  const { numbersLeft } = useNumberLeft(sudoku!, solution!);
   const displayGrid = sudoku && !loading;
 
   useEffect(() => fetchSudoku(), []);
@@ -32,7 +34,7 @@ export default function Board() {
         <p>Loading...</p>
       )}
 
-      <NumericPad onNumberClick={handleValueChange} />
+      <NumericPad numbersLeft={numbersLeft} onNumberClick={handleValueChange} />
     </section>
   );
 }

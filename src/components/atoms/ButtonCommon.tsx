@@ -1,14 +1,16 @@
+import { ReactNode } from "react";
+
 export default function ButtonCommon({
   children,
   disabled = false,
   onClickEvent,
 }: {
-  children: string | number;
+  children: ReactNode;
   disabled?: boolean;
   onClickEvent: () => void;
 }) {
   return (
-    <button onClick={onClickEvent} disabled={disabled}>
+    <button className="button-common" onClick={onClickEvent} disabled={disabled}>
       {children}
     </button>
   );

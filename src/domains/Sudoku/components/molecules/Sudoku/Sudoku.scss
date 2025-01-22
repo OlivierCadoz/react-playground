@@ -1,15 +1,15 @@
-@use '@/assets/scss/variables.scss';
+@use '@/assets/scss/globals.scss';
 
 .sudoku-list {
   display: flex;
   flex-wrap: wrap;
-  width: calc(variables.$sudoku-cell-size * 9);
+  width: calc(globals.$sudoku-cell-size * 9);
 
   .button-cell {
-    height: variables.$sudoku-cell-size;
-    width: variables.$sudoku-cell-size;
-    font-size: calc(variables.$sudoku-cell-size / 1.5);
-    line-height: variables.$sudoku-cell-size;
+    height: globals.$sudoku-cell-size;
+    width: globals.$sudoku-cell-size;
+    font-size: calc(globals.$sudoku-cell-size / 1.5);
+    line-height: globals.$sudoku-cell-size;
   }
 
   li:nth-child(3n+3) {  
@@ -23,12 +23,12 @@
   .sudoku-cell {
     &--selected .button-cell {
       color: white;
-      background-color: rgba(green, 0.8);
+      background-color: globals.$dark-green;
     }
 
     &--highlighted .button-cell {
       color: white;
-      background-color: rgba(green, 0.6);
+      background-color: globals.$light-green;
     }
   }
 }

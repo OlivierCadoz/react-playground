@@ -1,20 +1,20 @@
-@use '@/assets/scss/variables.scss';
+@use '@/assets/scss/globals.scss';
 
 .button-cell {
-  height: variables.$default-cell-size;
-  width: variables.$default-cell-size;
-  border: 1px solid #999;
-  background: #fff;
+  height: globals.$default-cell-size;
+  width: globals.$default-cell-size;
+  border: 1px solid globals.$gray;
+  background: globals.$white;
   float: left;
-  font-size: calc(variables.$default-cell-size / 1.5);
+  font-size: calc(globals.$default-cell-size / 1.5);
   font-weight: bold;
-  line-height: variables.$default-cell-size;
+  line-height: globals.$default-cell-size;
   margin-right: -1px;
   margin-top: -1px;
   padding: 0;
   text-align: center;
 
   &:disabled {
-    color: #000;
+    color: globals.$black;
   }
 }

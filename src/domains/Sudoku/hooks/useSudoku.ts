@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react';
-import { GridIndexesTuple, GridModel, SudokuType } from '@sudoku/models/sudoku.model';
+import {
+  GridIndexesTuple,
+  GridModel,
+  SudokuType,
+} from '@sudoku/models/sudoku.model';
 import { deepClone } from '@sudoku/utils';
 
 export function useSudoku(grid: GridModel | null) {
@@ -40,6 +44,7 @@ export function useSudoku(grid: GridModel | null) {
 
   return {
     sudoku,
+    solution,
     currentIndexes,
     handleCellClick,
     handleValueChange,

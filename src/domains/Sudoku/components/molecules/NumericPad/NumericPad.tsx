@@ -13,10 +13,15 @@ export default function NumericPad({
     <ul className="numeric-pad">
       {numerics.map((number, i) => (
         <li key={number}>
-          <ButtonCommon onClickEvent={() => onNumberClick(number)}>
-            <span className='numeric-pad__number'>{number}</span>
+          <ButtonCommon
+            disabled={!!number && !numbersLeft[i]}
+            onClickEvent={() => onNumberClick(number)}
+          >
+            <span className="numeric-pad__number">{number}</span>
 
-            {!!number && <span className='numeric-pad__left'>{numbersLeft[i]}</span>}
+            {!!number && (
+              <span className="numeric-pad__left">{numbersLeft[i]}</span>
+            )}
           </ButtonCommon>
         </li>
       ))}

@@ -1,3 +1,25 @@
+@use '@/assets/scss/globals.scss';
+
 .numeric-pad {
   display: flex;
+  align-items: stretch;
+
+  .button-common {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    background-color: globals.$white;
+    border: 1px solid globals.$dark-green;
+    border-radius: 6px;
+  }
+
+  &__number {
+    font-size: 24px;
+  }
+
+  &__left {
+    color: globals.$gray;
+  }
 }

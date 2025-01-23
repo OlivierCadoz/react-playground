@@ -8,5 +8,6 @@ export interface SetCellClassParameters {
 
 export interface UseCellClassParameters {
   sudoku: SudokuType;
+  solution: SudokuType;
   currentIndexes: GridIndexesTuple;
 }

@@ -22,13 +22,17 @@
 
   .sudoku-cell {
     &--selected .button-cell {
-      color: white;
+      color: globals.$white;
       background-color: globals.$dark-green;
     }
 
     &--highlighted .button-cell {
-      color: white;
+      color: globals.$white;
       background-color: globals.$light-green;
+    }
+
+    &--error .button-cell {
+      color: globals.$red;
     }
   }
 }

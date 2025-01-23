@@ -8,16 +8,18 @@ import { useCellClass } from '@/domains/Sudoku/hooks/useCellClass';
 
 interface SudokuProps {
   sudoku: SudokuType;
+  solution: SudokuType;
   currentIndexes: GridIndexesTuple;
   onCellClick: (rowIndex: number, cellIndex: number) => void;
 }
 
 export default function Sudoku({
   sudoku,
+  solution,
   currentIndexes,
   onCellClick,
 }: SudokuProps) {
-  const { setCellClass } = useCellClass({ sudoku, currentIndexes });
+  const { setCellClass } = useCellClass({ sudoku, solution, currentIndexes });
 
   return (
     <ul className="sudoku-list">

@@ -6,21 +6,29 @@ import {
 
 export function useCellClass({
   sudoku,
+  solution,
   currentIndexes,
 }: UseCellClassParameters) {
-
   const setCellClass = useCallback(
     ({ cell, rowIndex, cellIndex }: SetCellClassParameters) => {
-      const [rowIdx, cellIdx] = currentIndexes || [-1, -1];
-      const sudokuValue = sudoku?.[rowIdx]?.[cellIdx];
+      const classes = [];
+      const [rowIdx, cellIdx] = currentIndexes;
       const isSameRowIdx = rowIndex === rowIdx;
       const isSameCellIdx = cellIndex === cellIdx;
-      const isSameRowOrCellIdx = isSameRowIdx || isSameCellIdx;
+      const isCurrentCellWrong =
+        sudoku[rowIndex][cellIndex] !== solution[rowIndex][cellIndex];
       const isSelectedOrSameValueAsSelected =
-        (isSameRowIdx && isSameCellIdx) || (cell && sudokuValue === cell);
+        (isSameRowIdx && isSameCellIdx) ||
+        (cell && sudoku[rowIdx]?.[cellIdx] === cell);
 
-      if (isSelectedOrSameValueAsSelected) return 'sudoku-cell--selected';
-      if (isSameRowOrCellIdx) return 'sudoku-cell--highlighted';
+      if (isSelectedOrSameValueAsSelected)
+        classes.push('sudoku-cell--selected');
+      else if (isSameRowIdx || isSameCellIdx)
+        classes.push('sudoku-cell--highlighted');
+
+      if (isCurrentCellWrong) classes.push('sudoku-cell--error');
+
+      return classes.join(' ');
     },
     [currentIndexes, sudoku]
   );

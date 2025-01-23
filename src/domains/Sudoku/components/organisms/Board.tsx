@@ -27,6 +27,7 @@ export default function Board() {
       {displayGrid ? (
         <Sudoku
           sudoku={sudoku}
+          solution={solution!}
           currentIndexes={currentIndexes}
           onCellClick={handleCellClick}
         />

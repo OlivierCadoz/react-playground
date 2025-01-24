@@ -9,10 +9,10 @@ import { useNumberLeft } from '@sudoku/hooks/useNumberLeft';
 
 export default function Board() {
   const { fetchSudoku, grid, loading } = useFetchSudoku();
-  const { sudoku, solution, currentIndexes, handleCellClick, handleValueChange } =
+  const { sudoku, solution, currentIndex, handleCellClick, handleValueChange } =
     useSudoku(grid);
-  const { numbersLeft } = useNumberLeft(sudoku!, solution!);
-  const displayGrid = sudoku && !loading;
+  const { numbersLeft } = useNumberLeft(sudoku, solution);
+  const displayGrid = sudoku && solution && !loading;
 
   useEffect(() => fetchSudoku(), []);
 
@@ -27,8 +27,8 @@ export default function Board() {
       {displayGrid ? (
         <Sudoku
           sudoku={sudoku}
-          solution={solution!}
-          currentIndexes={currentIndexes}
+          solution={solution}
+          currentIndex={currentIndex}
           onCellClick={handleCellClick}
         />
       ) : (

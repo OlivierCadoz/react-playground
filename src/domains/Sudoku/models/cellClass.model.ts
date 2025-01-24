@@ -4,6 +4,7 @@ export interface SetCellClassParameters {
   cell: number;
   rowIndex: number;
   cellIndex: number;
+  itemIndex: number;
 }
 
 export interface UseCellClassParameters {

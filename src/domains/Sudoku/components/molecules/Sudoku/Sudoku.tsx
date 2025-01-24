@@ -19,7 +19,7 @@ export default function Sudoku({
   currentIndexes,
   onCellClick,
 }: SudokuProps) {
-  const { setCellClass } = useCellClass({ sudoku, solution, currentIndexes });
+  const { setCellClass, getItemIndex } = useCellClass({ sudoku, solution, currentIndexes });
 
   return (
     <ul className="sudoku-list">
@@ -31,6 +31,7 @@ export default function Sudoku({
               cell,
               rowIndex,
               cellIndex,
+              itemIndex: getItemIndex(rowIndex, cellIndex),
             })}`}
           >
             <ButtonCell

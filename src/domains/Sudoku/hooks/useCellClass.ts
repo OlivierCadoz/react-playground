@@ -15,8 +15,6 @@ export function useCellClass({
       const [rowIdx, cellIdx] = currentIndexes;
       const isSameRowIdx = rowIndex === rowIdx;
       const isSameCellIdx = cellIndex === cellIdx;
-      const isCurrentCellWrong =
-        sudoku[rowIndex][cellIndex] !== solution[rowIndex][cellIndex];
       const isSelectedOrSameValueAsSelected =
         (isSameRowIdx && isSameCellIdx) ||
         (cell && sudoku[rowIdx]?.[cellIdx] === cell);
@@ -26,6 +24,8 @@ export function useCellClass({
       else if (isSameRowIdx || isSameCellIdx)
         classes.push('sudoku-cell--highlighted');
 
+      const isCurrentCellWrong =
+        sudoku[rowIndex][cellIndex] !== solution[rowIndex][cellIndex];
       if (isCurrentCellWrong) classes.push('sudoku-cell--error');
 
       return classes.join(' ');

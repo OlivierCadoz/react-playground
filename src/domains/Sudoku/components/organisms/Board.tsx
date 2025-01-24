@@ -9,8 +9,14 @@ import { useNumberLeft } from '@sudoku/hooks/useNumberLeft';
 
 export default function Board() {
   const { fetchSudoku, grid, loading } = useFetchSudoku();
-  const { sudoku, solution, currentIndex, handleCellClick, handleValueChange } =
-    useSudoku(grid);
+  const {
+    sudoku,
+    solution,
+    currentIndex,
+    isSolved,
+    handleCellClick,
+    handleValueChange,
+  } = useSudoku(grid);
   const { numbersLeft } = useNumberLeft(sudoku, solution);
   const displayGrid = sudoku && solution && !loading;
 
@@ -36,6 +42,8 @@ export default function Board() {
       )}
 
       <NumericPad numbersLeft={numbersLeft} onNumberClick={handleValueChange} />
+
+      {isSolved && <p>Well done!</p>}
     </section>
   );
 }

@@ -12,8 +12,8 @@ export function useNumberLeft(
 
     solution &&
       sudoku?.forEach((cell, cellIndex) => {
-        if (!cell) {
-          const solutionCell = solution[cellIndex];
+        const solutionCell = solution[cellIndex];
+        if (!cell || solutionCell !== sudoku[cellIndex]) {
           const currentIndex = solutionCell - 1;
           nbrsLeft[currentIndex] = nbrsLeft[currentIndex] + 1;
         }

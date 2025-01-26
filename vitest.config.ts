@@ -33,6 +33,7 @@ export default defineConfig({
         '**/*.test.tsx',
         '**/*.d.ts',
       ],
+      provider: 'istanbul',
     },
   },
   css: {

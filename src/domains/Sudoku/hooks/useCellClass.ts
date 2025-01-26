@@ -29,11 +29,11 @@ export function useCellClass({
   const setCellClass = useCallback(
     ({ cell, cellIndex }: SetCellClassParameters) => {
       const classes = [];
-      const selectedOrSameValueAsSelected =
-        cellIndex === currentIndex || (cell && sudoku[currentIndex] === cell);
+      const selected = cellIndex === currentIndex;
+      const sameValAsSelected = cell && sudoku[currentIndex] === cell;
       const highlight = shouldHighlight(cellIndex, currentIndex);
 
-      if (selectedOrSameValueAsSelected) classes.push('sudoku-cell--selected');
+      if (selected || sameValAsSelected) classes.push('sudoku-cell--selected');
       else if (highlight) classes.push('sudoku-cell--highlighted');
 
       const cellWrong = sudoku[cellIndex] !== solution[cellIndex];

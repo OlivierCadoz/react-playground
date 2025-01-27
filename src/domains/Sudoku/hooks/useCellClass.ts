@@ -3,7 +3,7 @@ import {
   SetCellClassParameters,
   UseCellClassParameters,
 } from '@sudoku/models/cellClass.model';
-import { rows, columns, blocs } from '@sudoku/constants/Indexes';
+import { rows, columns, blocs } from '@sudoku/constants/indexes';
 
 const isIndexInArray = (indexArray: number[]) => (index: number) =>
   indexArray.some((idx) => index === idx);
@@ -33,13 +33,13 @@ export function useCellClass({
       const sameValAsSelected = cell && sudoku[currentIndex] === cell;
       const highlight = shouldHighlight(cellIndex, currentIndex);
 
-      if (selected || sameValAsSelected) classes.push('sudoku-cell--selected');
-      else if (highlight) classes.push('sudoku-cell--highlighted');
+      if (selected || sameValAsSelected) classes.push('selected');
+      else if (highlight) classes.push('highlighted');
 
-      const cellWrong = sudoku[cellIndex] !== solution[cellIndex];
-      if (cellWrong) classes.push('sudoku-cell--error');
+      const cellWrong = cell && cell !== solution[cellIndex];
+      if (cellWrong) classes.push('error');
 
-      return classes.join(' ');
+      return classes.map((val) => `sudoku-cell--${val}`).join(' ');
     },
     [currentIndex, sudoku]
   );

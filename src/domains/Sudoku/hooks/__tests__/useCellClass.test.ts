@@ -1,19 +1,19 @@
 import {
-  sudokuFixture,
-  solutionFixture,
+  mockSudoku,
+  mockSolution,
 } from '@/tests/fixtures/sudoku/sudoku.fixture';
 import { renderHook } from '@testing-library/react';
 import { useCellClass } from '@sudoku/hooks/useCellClass';
 
 const hookParamWithIndex0 = {
-  sudoku: sudokuFixture,
-  solution: solutionFixture,
+  sudoku: mockSudoku,
+  solution: mockSolution,
   currentIndex: 0,
 };
 
 const hookParamWithUnselected = {
-  sudoku: sudokuFixture,
-  solution: solutionFixture,
+  sudoku: mockSudoku,
+  solution: mockSolution,
   currentIndex: -1,
 };
 
@@ -83,7 +83,7 @@ describe('useCellClass hook', () => {
           );
 
           const classes = result.current.setCellClass({
-            cell: sudokuFixture[cellIndex],
+            cell: mockSudoku[cellIndex],
             cellIndex,
           });
 

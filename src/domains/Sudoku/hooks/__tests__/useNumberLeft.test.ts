@@ -1,8 +1,8 @@
 import { renderHook } from '@testing-library/react';
 import { useNumberLeft } from '@sudoku/hooks/useNumberLeft';
 import {
-  sudokuFixture,
-  solutionFixture,
+  mockSudoku,
+  mockSolution,
 } from '@/tests/fixtures/sudoku/sudoku.fixture';
 
 describe('useNumberLeft', () => {
@@ -19,7 +19,7 @@ describe('useNumberLeft', () => {
     describe('When sudoku or solution change', () => {
       test('Then it returns correct numbers left', () => {
         const { result } = renderHook(() =>
-          useNumberLeft(sudokuFixture, solutionFixture)
+          useNumberLeft(mockSudoku, mockSolution)
         );
         expect(result.current.numbersLeft).toEqual([7, 4, 5, 5, 5, 5, 2, 2, 6]);
       });

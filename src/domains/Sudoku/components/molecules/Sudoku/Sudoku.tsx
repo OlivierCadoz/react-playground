@@ -19,7 +19,7 @@ export default function Sudoku({
   const { setCellClass } = useCellClass({ sudoku, solution, currentIndex });
 
   return (
-    <ul className="sudoku-list">
+    <ul className="sudoku-list" data-testid="sudoku">
       {sudoku.map((cell, cellIndex) => (
         <li
           key={cellIndex}

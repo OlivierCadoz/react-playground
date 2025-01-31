@@ -81,11 +81,6 @@ describe('useSudoku hook', () => {
       const sudokuResolved = deepClone(mockGrid.solution);
       sudokuResolved[0][1] = 0;
       const _mockGrid: GridModel = { ...mockGrid, value: sudokuResolved };
-      console.log(
-        '🚀 ~ test ~ _mockGrid:',
-        _mockGrid.value,
-        _mockGrid.solution
-      );
       const { result } = renderHook(() => useSudoku(_mockGrid));
 
       act(() => {

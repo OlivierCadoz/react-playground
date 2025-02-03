@@ -1,29 +1,58 @@
 @use '@/assets/scss/globals.scss';
 
 .sudoku-list {
-  display: flex;
-  flex-wrap: wrap;
-  width: calc(globals.$sudoku-cell-size * 9);
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 3px;
+  width: 100%;
+  max-width: 380px;
+  margin-left: -3px;
 
   .button-cell {
-    height: globals.$sudoku-cell-size;
-    width: globals.$sudoku-cell-size;
-    font-size: calc(globals.$sudoku-cell-size / 1.5);
-    line-height: globals.$sudoku-cell-size;
+    height: 100%;
+    width: 100%;
+    font-size: 5vw;
+    border: none;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px #0000001a;
+
+    @media (min-width: 768px) {
+      font-size: 24px;
+    }
   }
 
-  li:nth-child(3n+3) {  
-    margin-right: 1px;
+  li {
+    position: relative;
+    aspect-ratio: 1;
   }
 
-  li:nth-child(27n+27) {  
-    margin-bottom: 1px;
+  li:nth-child(27n + 11)::after,
+  li:nth-child(27n + 14)::after,
+  li:nth-child(27n + 17)::after {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    height: 300%;
+    width: 300%;
+    transform: translate(17%, 17%);
+    background-color: globals.$light-green;
+    box-shadow: 0 0 6px globals.$light-green;
+  }
+
+  li:nth-child(3n + 3) {
+    margin-right: 3px;
+  }
+
+  li:nth-child(27n + 27) {
+    margin-bottom: 3px;
   }
 
   .sudoku-cell {
     &--selected .button-cell {
       color: globals.$white;
-      background-color: globals.$dark-green;
+      background-color: globals.$green;
     }
 
     &--highlighted .button-cell {

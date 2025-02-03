@@ -1,0 +1,29 @@
+@use '@/assets/scss/globals.scss';
+
+.board {
+  display: flex;
+  flex-direction: column;
+
+  &__reset-btn {
+    align-self: flex-end;
+    margin-top: 16px;
+    padding: 8px 16px;
+    background-color: globals.$green;
+    color: globals.$white;
+    border: none;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: globals.$dark-green;
+    }
+  }
+
+  .sudoku-list {
+    align-self: center;
+  }
+  
+  .sudoku-list,
+  .numeric-pad {
+    margin-top: 24px;
+  }
+}

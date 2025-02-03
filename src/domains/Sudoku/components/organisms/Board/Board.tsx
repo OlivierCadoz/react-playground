@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import '@sudoku/components/molecules/Sudoku/Sudoku.scss';
+import '@sudoku/components/organisms/Board/Board.scss';
 import ButtonCommon from '@/components/atoms/ButtonCommon';
 import Sudoku from '@sudoku/components/molecules/Sudoku/Sudoku';
 import NumericPad from '@sudoku/components/molecules/NumericPad/NumericPad';
@@ -23,11 +23,11 @@ export default function Board() {
   useEffect(() => fetchSudoku(), []);
 
   return (
-    <section className="sudoku">
-      <h1>Sudoku</h1>
+    <section className="board">
+      <h1 className='sr-only'>Sudoku</h1>
 
-      <ButtonCommon onClickEvent={fetchSudoku} disabled={loading}>
-        Reset
+      <ButtonCommon className={'board__reset-btn'} onClickEvent={fetchSudoku} disabled={loading}>
+        Nouvelle Partie
       </ButtonCommon>
 
       {displayGrid ? (

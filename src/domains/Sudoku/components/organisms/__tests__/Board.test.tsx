@@ -1,5 +1,5 @@
 import { render, screen, act } from '@testing-library/react';
-import Board from '@sudoku/components/organisms/Board';
+import Board from '@/domains/Sudoku/components/organisms/Board/Board';
 import {
   mockSolution,
   mockSudoku,

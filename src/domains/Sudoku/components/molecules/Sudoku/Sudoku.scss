@@ -8,6 +8,10 @@
   max-width: 380px;
   margin-left: -3px;
 
+  @media (min-width: 768px) {
+    width: 380px;
+  }
+
   .button-cell {
     height: 100%;
     width: 100%;
@@ -24,21 +28,6 @@
   li {
     position: relative;
     aspect-ratio: 1;
-  }
-
-  li:nth-child(27n + 11)::after,
-  li:nth-child(27n + 14)::after,
-  li:nth-child(27n + 17)::after {
-    content: '';
-    z-index: -1;
-    position: absolute;
-    top: -150%;
-    left: -150%;
-    height: 300%;
-    width: 300%;
-    transform: translate(17%, 17%);
-    background-color: globals.$light-green;
-    box-shadow: 0 0 6px globals.$light-green;
   }
 
   li:nth-child(3n + 3) {

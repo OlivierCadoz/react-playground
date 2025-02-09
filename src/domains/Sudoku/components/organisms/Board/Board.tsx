@@ -24,24 +24,33 @@ export default function Board() {
 
   return (
     <section className="board">
-      <h1 className='sr-only'>Sudoku</h1>
+      <h1 className="sr-only">Sudoku</h1>
 
-      <ButtonCommon className={'board__reset-btn'} onClickEvent={fetchSudoku} disabled={loading}>
+      <ButtonCommon
+        className={'board__reset-btn'}
+        onClickEvent={fetchSudoku}
+        disabled={loading}
+      >
         Nouvelle Partie
       </ButtonCommon>
 
-      {displayGrid ? (
-        <Sudoku
-          sudoku={sudoku}
-          solution={solution}
-          currentIndex={currentIndex}
-          onCellClick={handleCellClick}
-        />
-      ) : (
-        <p>Loading...</p>
-      )}
+      <div className='board__flex-container'>
+        {displayGrid ? (
+          <Sudoku
+            sudoku={sudoku}
+            solution={solution}
+            currentIndex={currentIndex}
+            onCellClick={handleCellClick}
+          />
+        ) : (
+          <p>Loading...</p>
+        )}
 
-      <NumericPad numbersLeft={numbersLeft} onNumberClick={handleValueChange} />
+        <NumericPad
+          numbersLeft={numbersLeft}
+          onNumberClick={handleValueChange}
+        />
+      </div>
 
       {isSolved && <p>Well done!</p>}
     </section>

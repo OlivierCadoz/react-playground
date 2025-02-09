@@ -11,6 +11,9 @@
     display: flex;
     justify-content: center;
     margin-bottom: 8px;
+    @media (min-width: 768px) {
+      flex-basis: 33.3333%;
+    }
   }
 
   .button-common {
